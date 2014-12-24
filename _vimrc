@@ -8,24 +8,16 @@ if has('vim_starting')
 endif
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
+
 NeoBundle 'Shougo/unite.vim'
+
+" 単語補完
 NeoBundle 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
 NeoBundle 'violetyk/neocomplete-php.vim'
 let g:neocomplete_php_locale = 'ja'
 " 最初に :PhpMakeDict ja で辞書を作成する。
 
-"NeoBundle 'Shougo/neosnippet'
-"NeoBundle 'Shougo/neosnippet-snippets'
-" neosnippet setting
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
@@ -40,3 +32,15 @@ set showcmd
 set tabstop=4
 " 行番号を表示
 set number
+
+" 文字コード設定
+set encoding=utf-8
+
+" バックアップファイルの設定
+set backup
+set backupdir=~/tmp/vim
+
+" swapファイルの設定
+set swapfile
+set directory=~/tmp/vim
+
