@@ -19,6 +19,7 @@ let g:neocomplete_php_locale = 'ja'
 " 最初に :PhpMakeDict ja で辞書を作成する。
 
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'thinca/vim-singleton'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
 
