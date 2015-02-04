@@ -30,6 +30,7 @@ syntax on
 set showcmd
 " タブ文字の表示幅
 set tabstop=4
+set shiftwidth=4
 " 行番号を表示
 set number
 
@@ -89,6 +90,7 @@ map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
+map <silent> [Tag]u :Ut<CR>
 
 "" タブの設定 ここまで---
 
@@ -104,8 +106,41 @@ function! s:runPhpunit()
 		endif
 endfunction
 
+function! s:checkPHP()
+	let filePath = expand('%:p')
+	exe "!php -l " . filePath
+endfunction
+
 autocmd BufWritePost *.{php} call <SID>runPhpunit()
+autocmd BufWritePost *.{php} call <SID>checkPHP()
+
+
+" backspace の有効化
+set backspace=start,eol,indent
+
+set encoding=sjis
+
+set fileencodings=iso-2022-jp,cp932,euc-jp,utf-8
+
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+set iminsert=0
+set imsearch=0
+
+set nowrap
+command Ut Unite file -tab
+
+" netrwは常にtree view
+let g:netrw_liststyle = 3
+" " CVSと.で始まるファイルは表示しない
+" let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
+" " 'v'でファイルを開くときは右側に開く。(デフォルトが左側なので入れ替え)
+let g:netrw_altv = 1
+" " 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
+let g:netrw_alto = 1
 
 
 
+"" vim を一つのタブで起動する
+call singleton#enable()
 
